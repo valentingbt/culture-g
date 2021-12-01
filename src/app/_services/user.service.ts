@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
-import { environment } from '../../environments/environment';
-import { User } from '../_models/user';
+import {environment} from '../../environments/environment';
+import {User} from '../_models/user';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class UserService {
   private userSubject: BehaviorSubject<User>;
   public user: Observable<User>;
@@ -24,8 +24,8 @@ export class UserService {
     return this.userSubject.value;
   }
 
-  login(email:string, password:string) {
-    return this.http.post<User>(`${environment.apiUrl}/login`, { email, password })
+  login(email: string, password: string) {
+    return this.http.post<User>(`${environment.apiUrl}/login`, {user: {email, password}})
       .pipe(map(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('user', JSON.stringify(user));
@@ -43,8 +43,13 @@ export class UserService {
   }
 
   register(user: User) {
-    console.log('regiter')
-    return this.http.post(`${environment.apiUrl}/register`, user);
+
+    return this.http.post<User>(`${environment.apiUrl}/register`, {user}).pipe(map(user => {
+      // store user details and jwt token in local storage to keep user logged in between page refreshes
+      localStorage.setItem('user', JSON.stringify(user));
+        this.userSubject.next(user);
+      return user;
+    }));
   }
 
   // getAll() {
