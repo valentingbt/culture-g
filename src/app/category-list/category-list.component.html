@@ -1,0 +1,110 @@
+<div style="width: 500px" class=" bg-white rounded-md px-4 py-5 border-b border-gray-200 sm:px-6">
+  <h2 class="text-xl mb-4">Categories</h2>
+
+  <fieldset>
+    <div class="space-y-4">
+      <!--
+        Checked: "border-transparent", Not Checked: "border-gray-300"
+        Active: "ring-2 ring-indigo-500"
+      -->
+      <label *ngFor="let category of categories" (click)="chooseCategory(category._id)"
+             class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none">
+        <input type="radio" name="server-size" value="Hobby" class="sr-only" aria-labelledby="server-size-0-label"
+               aria-describedby="server-size-0-description-0 server-size-0-description-1">
+        <div class="flex items-center">
+          <div class="text-sm">
+            <p id="server-size-0-label" class="font-medium text-gray-900">
+              {{ category.name }}
+            </p>
+          </div>
+        </div>
+        <!--
+          Active: "border", Not Active: "border-2"
+          Checked: "border-indigo-500", Not Checked: "border-transparent"
+        -->
+        <div [ngClass]="{'border-indigo-500': category._id === gameCategoryID}"
+             class=" absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+      </label>
+
+    </div>
+  </fieldset>
+
+  <h2 class="text-xl my-4">Difficulte</h2>
+
+  <fieldset>
+    <div class="space-y-4">
+      <!--
+        Checked: "border-transparent", Not Checked: "border-gray-300"
+        Active: "ring-2 ring-indigo-500"
+      -->
+      <label (click)="chooseDifficulty(1)"
+             class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none">
+        <input type="radio" name="server-size" value="Hobby" class="sr-only" aria-labelledby="server-size-0-label"
+               aria-describedby="server-size-0-description-0 server-size-0-description-1">
+        <div class="flex items-center">
+          <div class="text-sm">
+            <p id="server-size-0-label" class="font-medium text-gray-900">
+              Facile
+            </p>
+          </div>
+        </div>
+        <!--
+          Active: "border", Not Active: "border-2"
+          Checked: "border-indigo-500", Not Checked: "border-transparent"
+        -->
+        <div [ngClass]="{'border-indigo-500': gameDifficulty === 1}"
+             class=" absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+      </label>
+
+      <label (click)="chooseDifficulty(2)"
+             class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none">
+        <input type="radio" name="server-size" value="Hobby" class="sr-only" aria-labelledby="server-size-0-label"
+               aria-describedby="server-size-0-description-0 server-size-0-description-1">
+        <div class="flex items-center">
+          <div class="text-sm">
+            <p id="server-size-0-label" class="font-medium text-gray-900">
+              Moyen
+            </p>
+          </div>
+        </div>
+        <!--
+          Active: "border", Not Active: "border-2"
+          Checked: "border-indigo-500", Not Checked: "border-transparent"
+        -->
+        <div [ngClass]="{'border-indigo-500': gameDifficulty === 2}"
+             class=" absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+      </label>
+
+      <label (click)="chooseDifficulty(3)"
+             class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none">
+        <input type="radio" name="server-size" value="Hobby" class="sr-only" aria-labelledby="server-size-0-label"
+               aria-describedby="server-size-0-description-0 server-size-0-description-1">
+        <div class="flex items-center">
+          <div class="text-sm">
+            <p id="server-size-0-label" class="font-medium text-gray-900">
+              Difficile
+            </p>
+          </div>
+        </div>
+        <!--
+          Active: "border", Not Active: "border-2"
+          Checked: "border-indigo-500", Not Checked: "border-transparent"
+        -->
+        <div [ngClass]="{'border-indigo-500': gameDifficulty === 3}"
+             class=" absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+      </label>
+
+    </div>
+  </fieldset>
+
+  <div class="my-4">
+    <h2 class="text-xl my-4">Nombre de questions</h2>
+    <div class="mt-1">
+      <input [(ngModel)]="gameNbQuestion" type="number" min="1" max="10" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+  <button [disabled]="!gameDifficulty || !gameCategoryID || !gameNbQuestion" [ngClass]="{'opacity-50':!gameDifficulty || !gameCategoryID || !gameNbQuestion}" (click)="startGame()" type="button"
+          class="text-center w-full inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+    Start Game
+  </button>
+</div>

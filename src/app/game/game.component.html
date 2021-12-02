@@ -1,0 +1,24 @@
+
+<div class="flex flex-col items-center">
+  <app-animated-logo></app-animated-logo>
+  <app-category-list *ngIf="!hideConfig" (start)="showQuestion($event)"></app-category-list>
+  <div class="text-white">
+    <div *ngIf="hideConfig && !endGame">
+      Points : {{ nbPoints}}
+      {{question.content}}
+
+      <div *ngFor="let answer of answers">
+        <button (click)="answerQuestion(answer._id)">
+          {{ answer.name }}
+        </button>
+      </div>
+
+      <div *ngIf="isCorrect">VRAI</div>
+      <div *ngIf="isCorrect === false">FAUX</div>
+    </div>
+
+    <div *ngIf="endGame">
+      Bravo ! Tu as finis ! Tu as {{ nbPoints}} points !
+      <button routerLink="/">Revenir au menu</button>
+    </div>
+</div>
