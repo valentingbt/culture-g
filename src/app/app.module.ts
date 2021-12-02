@@ -13,6 +13,9 @@ import { HomeComponent } from './home/home.component';
 import { AnimatedLogoComponent } from './animated-logo/animated-logo.component';
 import {JwtInterceptor} from "./_helpers/jwt.interceptor";
 import {ErrorInterceptor} from "./_helpers/error.interceptor";
+import { GameComponent } from './game/game.component';
+import { HistoryComponent } from './history/history.component';
+import { CategoryListComponent } from './category-list/category-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import {ErrorInterceptor} from "./_helpers/error.interceptor";
     RegisterComponent,
     LoginComponent,
     HomeComponent,
-    AnimatedLogoComponent
+    AnimatedLogoComponent,
+    GameComponent,
+    HistoryComponent,
+    CategoryListComponent
   ],
   imports: [
     BrowserModule,
