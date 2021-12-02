@@ -1,4 +1,4 @@
-<div style="width: 500px" class=" bg-white rounded-md px-4 py-5 border-b border-gray-200 sm:px-6">
+<div style="width: 500px" class="text-white rounded-md px-4 py-5 border-b border-gray-200 sm:px-6">
   <h2 class="text-xl mb-4">Categories</h2>
 
   <fieldset>
@@ -8,12 +8,12 @@
         Active: "ring-2 ring-indigo-500"
       -->
       <label *ngFor="let category of categories" (click)="chooseCategory(category._id)"
-             class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none">
+             class="relative block border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none">
         <input type="radio" name="server-size" value="Hobby" class="sr-only" aria-labelledby="server-size-0-label"
                aria-describedby="server-size-0-description-0 server-size-0-description-1">
         <div class="flex items-center">
           <div class="text-sm">
-            <p id="server-size-0-label" class="font-medium text-gray-900">
+            <p id="server-size-0-label" class="font-medium">
               {{ category.name }}
             </p>
           </div>
@@ -38,12 +38,12 @@
         Active: "ring-2 ring-indigo-500"
       -->
       <label (click)="chooseDifficulty(1)"
-             class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none">
+             class="relative block text-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none">
         <input type="radio" name="server-size" value="Hobby" class="sr-only" aria-labelledby="server-size-0-label"
                aria-describedby="server-size-0-description-0 server-size-0-description-1">
         <div class="flex items-center">
           <div class="text-sm">
-            <p id="server-size-0-label" class="font-medium text-gray-900">
+            <p id="server-size-0-label" class="font-medium">
               Facile
             </p>
           </div>
@@ -57,12 +57,12 @@
       </label>
 
       <label (click)="chooseDifficulty(2)"
-             class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none">
+             class="relative block border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none">
         <input type="radio" name="server-size" value="Hobby" class="sr-only" aria-labelledby="server-size-0-label"
                aria-describedby="server-size-0-description-0 server-size-0-description-1">
         <div class="flex items-center">
           <div class="text-sm">
-            <p id="server-size-0-label" class="font-medium text-gray-900">
+            <p id="server-size-0-label" class="font-mediums">
               Moyen
             </p>
           </div>
@@ -76,12 +76,12 @@
       </label>
 
       <label (click)="chooseDifficulty(3)"
-             class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none">
+             class="relative block border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none">
         <input type="radio" name="server-size" value="Hobby" class="sr-only" aria-labelledby="server-size-0-label"
                aria-describedby="server-size-0-description-0 server-size-0-description-1">
         <div class="flex items-center">
           <div class="text-sm">
-            <p id="server-size-0-label" class="font-medium text-gray-900">
+            <p id="server-size-0-label" class="font-medium">
               Difficile
             </p>
           </div>
@@ -100,7 +100,7 @@
   <div class="my-4">
     <h2 class="text-xl my-4">Nombre de questions</h2>
     <div class="mt-1">
-      <input [(ngModel)]="gameNbQuestion" type="number" min="1" max="10" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+      <input [(ngModel)]="gameNbQuestion" type="number" min="1" max="10" class="text-gray-900 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
     </div>
   </div>
   <button [disabled]="!gameDifficulty || !gameCategoryID || !gameNbQuestion" [ngClass]="{'opacity-50':!gameDifficulty || !gameCategoryID || !gameNbQuestion}" (click)="startGame()" type="button"

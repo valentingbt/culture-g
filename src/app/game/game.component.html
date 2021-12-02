@@ -3,9 +3,13 @@
   <app-animated-logo></app-animated-logo>
   <app-category-list *ngIf="!hideConfig" (start)="showQuestion($event)"></app-category-list>
   <div class="text-white">
-    <div *ngIf="hideConfig && !endGame">
-      Points : {{ nbPoints}}
-      {{question.content}}
+    <div class="flex flex-col align-center mb-4" *ngIf="hideConfig && !endGame">
+      <div class="bg-white text-indigo-800 rounded mb-3">
+              Points : {{ nbPoints}}
+      </div>
+      <div class="text-xl mb-3">
+              {{question.content}}
+      </div>
 
       <div *ngFor="let answer of answers">
         <button (click)="answerQuestion(answer._id)">
